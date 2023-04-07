@@ -33,7 +33,7 @@ jobs:
         uses: cygwin/cygwin-install-action@master
         with:
           platform: x86_64
-          packages: make gcc-core gcc-g++ coreutils curl diffutils gawk tar openssl-devel pcre-devel zlib-devel
+          packages: make gcc-core gcc-g++ coreutils curl diffutils gawk tar openssl-devel
 
       # Cygwin executables are added to PATH, so you can call them directly:
       - run: |
@@ -42,7 +42,7 @@ jobs:
       - name: Make haproxy
         run: |
           cd haproxy
-          make TARGET=cygwin USE_OPENSSL=1 USE_ZLIB=1 USE_THREAD=1 USE_PCRE=1
+          make TARGET=cygwin USE_OPENSSL=1
       - run: |
           ls
           ls c:
