@@ -73,7 +73,7 @@ jobs:
         with:
           # note you'll typically need to create a personal access token
           # with permissions to create releases in the other repo
-          name: v2.8-dev6
-          tag_name: ${{ steps.tag.outputs.tag }}
+          name: Haproxy
+          tag_name: v2.8-dev6
           files: |
             *.tar.gz
