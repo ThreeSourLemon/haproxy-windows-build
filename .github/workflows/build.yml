@@ -67,6 +67,13 @@ jobs:
       #     ./pyuploadtool-x86_64.AppImage \
       #     *.tar.gz
 
+      - name: Upload files to Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: haproxy-${{ steps.tag.outputs.tag }}
+          path: |
+            ./haproxy-${{ steps.tag.outputs.tag }}.tar.gz
+            
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
