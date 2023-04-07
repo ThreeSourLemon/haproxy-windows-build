@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: 'haproxy/haproxy'
-          ref: 'v2.7.0'
+          ref: 'v2.8-dev6'
           path: 'haproxy'
       - run: |
           ls
@@ -33,7 +33,7 @@ jobs:
         uses: cygwin/cygwin-install-action@master
         with:
           platform: x86_64
-          packages: make gcc-core gcc-g++
+          packages: make gcc-core gcc-g++ coreutils curl diffutils gawk tar openssl-devel
 
       # Cygwin executables are added to PATH, so you can call them directly:
       - run: |
@@ -42,7 +42,7 @@ jobs:
       - name: Make haproxy
         run: |
           cd haproxy
-          make TARGET=cygwin
+          make TARGET=cygwin USE_OPENSSL=1
       - run: |
           ls
           ls c:
@@ -73,7 +73,7 @@ jobs:
         with:
           # note you'll typically need to create a personal access token
           # with permissions to create releases in the other repo
-          name: v2.7.0
+          name: v2.8-dev6
           tag_name: ${{ steps.tag.outputs.tag }}
           files: |
             *.tar.gz
