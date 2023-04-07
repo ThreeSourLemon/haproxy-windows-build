@@ -55,7 +55,7 @@ jobs:
           cp c:\cygwin\bin\cyggcc_s-seh-1.dll release
           cp haproxy.cfg release
           ls release
-          tar -zcf haproxy-${{ steps.tag.outputs.tag }}.tar.gz release
+          tar -zcf haproxy.tar.gz release
       # - name: Create release and upload artifacts
       #   if: startsWith(github.ref, 'refs/heads/')
       #   env:
@@ -70,9 +70,9 @@ jobs:
       - name: Upload files to Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: haproxy-${{ steps.tag.outputs.tag }}
+          name: haproxy
           path: |
-            ./haproxy-${{ steps.tag.outputs.tag }}.tar.gz
+            ./haproxy.tar.gz
             
       - name: Release
         uses: softprops/action-gh-release@v1
