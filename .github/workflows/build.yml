@@ -51,6 +51,7 @@ jobs:
           mkdir release
           cp haproxy\haproxy.exe release
           cp C:\cygwin\bin\cygwin1.dll release
+          cp C:\cygwin\bin\cyggcc_s-seh-1.dll release
           cp haproxy.cfg release
           ls release
 
